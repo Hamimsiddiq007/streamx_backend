@@ -1,1 +1,0 @@
-export const DB_NAME = "streamx_db";
