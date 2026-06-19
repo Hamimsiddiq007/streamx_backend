@@ -2,7 +2,7 @@ import dotenv from 'dotenv';
 import connectDB from './db/database.js';
 import app from './app.js';
 
-dotenv.config();
+dotenv.config({ path: './config.env' });
 console.log(process.env.MONGODB_URI);
 
 connectDB()
