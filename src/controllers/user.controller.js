@@ -15,7 +15,6 @@ const registerUser = asyncHandler(async (req, res) => {
     // send response to frontend
 
     const {username, email, password, fullname} = req.body;
-    console.log('email :', email);
 
     if(
         [username, email, password, fullname].some(field => field.trim() === '')
@@ -66,5 +65,28 @@ const registerUser = asyncHandler(async (req, res) => {
 
 });
 
+const loginUser = asyncHandler(async (req, res) => {
+    // req.body => data
+    // username or email
+    // find the user
+    // password check
+    // access and refresh token
+    // send response
 
-export {registerUser};
+    const {username, password, email} = req.body;
+
+    if(!username || !email){
+        throw new ApiError(400, "Username or email is required");
+    }
+
+    const user = await User.findOne({
+        $or: [{email}, {username}]
+    })
+
+    if(!user){
+        throw new ApiError(404, "User does not exist");
+    }
+});
+
+
+export {registerUser, loginUser};
