@@ -124,5 +124,11 @@ const loginUser = asyncHandler(async (req, res) => {
     )
 });
 
+const logoutUser = asyncHandler(async (req, res) => {
+    // remove tokens from cookies
+    // send response
+    
+});
+
 
 export {registerUser, loginUser};
